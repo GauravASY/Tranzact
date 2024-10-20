@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/middlewares/authorization.ts","./src/middlewares/transactauth.ts","./src/middlewares/validation.ts","./src/routes/accountrouter.ts","./src/routes/transactrouter.ts","./src/routes/userroutes.ts"],"version":"5.6.3"}
