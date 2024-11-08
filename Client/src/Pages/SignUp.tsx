@@ -5,6 +5,9 @@ import Button from '../Components/Button'
 import bkg from '../assets/99824.jpg'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify'
+import { toastOptions } from '../Utilities/ToastOptions'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function SignUp() {
@@ -28,12 +31,15 @@ function SignUp() {
       setUsername("");
       setPassword("");
       setEmail("");
-      //insert toastify here that showcases the message in response.
-      navigate("/signin");
+      toast.success(data.message, toastOptions);
+      setTimeout(() => {
+        navigate("/signin");
+      }, 2000);
+      
     }
     else
     {
-      console.log(data.message);
+      toast.error(data.message, toastOptions)
     }
 }
 
@@ -53,6 +59,7 @@ function SignUp() {
             <Button onClick={handleSubmit}/>
         </div>
     </div>
+    <ToastContainer/>
     </div>
   )
 }

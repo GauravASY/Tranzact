@@ -4,7 +4,9 @@ import Input from '../Components/Input'
 import Button from '../Components/Button'
 import bkg from '../assets/99824.jpg'
 import { useNavigate } from 'react-router-dom'
-
+import { ToastContainer, toast } from 'react-toastify'
+import { toastOptions } from '../Utilities/ToastOptions'
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignIn() {
   const [username, setUsername] = useState("");
@@ -27,10 +29,14 @@ function SignIn() {
       const data = await result.json();
       if(data.success){
         localStorage.setItem("token", JSON.stringify(data.token));
-        navigate("/");
+        toast.success(data.message, toastOptions);
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+        
       }
       else{
-        console.log(data.message);
+        toast.error(data.message, toastOptions)
       }
   }
 
@@ -51,6 +57,7 @@ function SignIn() {
             <Button onClick={handleSubmit}/>
         </div>
     </div>
+    <ToastContainer/>
     </div>
   )
 }

@@ -12,16 +12,17 @@ interface propsType {
   Token: string;
   sendFrom : userType | null;
   SendTo: userType | null;
+  flag : string,
+  setFlag : React.Dispatch<React.SetStateAction<string>>;
 }
 
 function TransferBox(props: propsType) {
   const [amount, setAmount] = useState("");
 
-  async function handleClick() {
+  async function handleClick() {  
     props.setVisible();
-    
     if(parseInt(amount) <= 0){
-      //toasitfy improper amount.
+      props.setFlag("false");
       return;
     }
 
@@ -42,7 +43,7 @@ function TransferBox(props: propsType) {
       );
       const data = await result.json();
       if (data.success) {
-          const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/transaction/create`,{
+          await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/transaction/create`,{
             method : "POST",
             headers : {
               'Content-Type' : 'application/json',
@@ -54,10 +55,13 @@ function TransferBox(props: propsType) {
             })
           })
 
-          const response2 = await response.json();
+          props.setFlag("true");   
+      }
+      else{
+        props.setFlag("false");
       }
     } catch (error) {
-      console.log(error);
+          props.setFlag("false");
     }
   }
 

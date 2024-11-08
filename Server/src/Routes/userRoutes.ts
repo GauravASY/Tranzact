@@ -67,10 +67,10 @@ userRouter.post("/signin", validation, async (req, res) => {
         res.json({ message: "Incorrect password", success: false });
       }
     } else {
-      res.json({ message: "No user found. Sign-up first", success: true });
+      res.json({ message: "No user found. Sign-up first", success: false });
     }
   } catch (error) {
-    res.json({ message: error, success: false });
+    res.json({ message: "error", success: false });
   }
 });
 
@@ -125,7 +125,7 @@ userRouter.post(
         res.json({message : "Transaction Failed. Check Account", success : false})
       }
     } catch (error) {
-      res.json({ message: error, success: false });
+      res.json({ message: "Something went wrong!", success: false });
     }
   }
 );

@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import SearchBar from "../Components/SearchBar";
 import DisplayList from "../Components/DisplayList";
 import TransferBox from "../Components/TransferBox";
+import { ToastContainer, toast } from 'react-toastify'
+import { toastOptions } from '../Utilities/ToastOptions'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Profile() {
@@ -12,6 +15,7 @@ function Profile() {
     const [visible, setVisible] = useState(false);
     const [currentUser, setCurrentUser] = useState<userType | null>(null);
     const [sendTo, setSendTo] = useState<userType | null>(null);
+    const [transactionFlag, setTransactionFlag] = useState("pending");
 
     const navigate = useNavigate();
 
@@ -33,6 +37,20 @@ useEffect(()=>{
         fetchcCurrent();
     }
 },[log])
+
+useEffect(()=>{
+    if(transactionFlag == "true"){
+        toast.success("Transaction successful", toastOptions);
+        setTransactionFlag("pending");
+        return;
+    }
+    if(transactionFlag == "false"){
+        toast.error("Transaction Failed", toastOptions);
+        setTransactionFlag("pending");
+        return;
+    }
+
+},[transactionFlag])
 
 async function fetchcCurrent(){
     const value = localStorage.getItem("token");
@@ -95,8 +113,9 @@ interface userType{
         </div>
     </div>
         {
-            visible ? <TransferBox setVisible={()=> setVisible(false)}  sendFrom={currentUser} Token={log} SendTo={sendTo} />  : <></>
+            visible ? <TransferBox setVisible={()=> setVisible(false)}  sendFrom={currentUser} Token={log} SendTo={sendTo} flag={transactionFlag} setFlag={setTransactionFlag} />  : <></>
         }
+        <ToastContainer/>
     </div>
   )
 }
