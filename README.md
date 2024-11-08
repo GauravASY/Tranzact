@@ -1,6 +1,6 @@
 # Tranzact : Money Transfer
 This is a full-stack application that allows users to send and receive money. It is built using TypeScript, React, Prisma, PostgreSQL (with database transactions), and JWT for authentication.
-
+### visit the app here : https://tranzact-lneo.vercel.app/
 ## Features
 - User Authentication : Secure user registration and login using JSON Web Tokens (JWT).
 - Send Money : Users can send money to others with transactional guarantees using PostgreSQL.
