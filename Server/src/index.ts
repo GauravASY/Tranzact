@@ -5,7 +5,11 @@ import transactRouter from './Routes/transactRouter';
 import accountRouter from './Routes/accountRouter'
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin : "https://tranzact-lneo.vercel.app/",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, 
+}));
 app.use(express.json());
 
 app.use("/api/v1/user", userRouter);
