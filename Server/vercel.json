@@ -1,17 +1,18 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "dist/index.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/index.js"
-    }
-  ],
+ "version": 2,
+    "builds": [
+        {
+            "src": "dist/index.js",
+            "use": "@vercel/node",
+            "config": { "includeFiles": ["dist/**"] }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "dist/index.js"
+        }
+    ],
   "env": {
     "DATABASE_URL": "postgresql://omegaR:dV2ME0WxRlZk@ep-crimson-truth-a5bm82cq.us-east-2.aws.neon.tech/Paytm?sslmode=require",
     "JWT_SECRET": "GetsugaTensho",
