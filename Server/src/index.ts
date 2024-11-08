@@ -6,7 +6,7 @@ import accountRouter from './Routes/accountRouter'
 const app = express();
 
 app.use(cors({
-    origin : "https://tranzact-lneo.vercel.app/",
+    origin : "https://tranzact-lneo.vercel.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, 
 }));
