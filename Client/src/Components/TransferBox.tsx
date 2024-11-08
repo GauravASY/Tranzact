@@ -27,7 +27,7 @@ function TransferBox(props: propsType) {
 
     try {
       const result = await fetch(
-        "http://localhost:3000/api/v1/user/sendMoney",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/sendMoney`,
         {
           method: "POST",
           headers: {
@@ -42,7 +42,7 @@ function TransferBox(props: propsType) {
       );
       const data = await result.json();
       if (data.success) {
-          const response = await fetch("http://localhost:3000/api/v1/transaction/create",{
+          const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/transaction/create`,{
             method : "POST",
             headers : {
               'Content-Type' : 'application/json',
@@ -55,7 +55,6 @@ function TransferBox(props: propsType) {
           })
 
           const response2 = await response.json();
-          console.log(response2);
       }
     } catch (error) {
       console.log(error);
@@ -63,9 +62,9 @@ function TransferBox(props: propsType) {
   }
 
   return (
-    <div className="absolute w-1/4 h-1/3 flex flex-col dark:bg-emerald-600 shadow-gray-500 shadow-md gap-5 py-4 px-8 items-center left-[37%] top-[36%]  rounded-xl">
-      <div className="flex gap-2 items-center mt-4">
-        <span className="h-10 w-10 rounded-full flex justify-center dark:bg-gray-900 text-gray-50 items-center text-4xl  font-serif font-semibold ">
+    <div className="absolute w-1/4 h-1/3 flex flex-col bg-emerald-800 shadow-gray-700 shadow-md gap-5 py-4 px-8 items-center left-[37%] top-[36%]  rounded-xl">
+      <div className="flex gap-4 items-center mt-4">
+        <span className="h-10 w-10 rounded-full flex justify-center p-6 bg-gray-900 text-gray-50 items-center text-4xl  font-serif font-semibold ">
           {props.SendTo?.username.charAt(0).toUpperCase()}
         </span>
         <h1 className="flex justify-center items-center text-gray-50 text-2xl  font-mono font-semibold">

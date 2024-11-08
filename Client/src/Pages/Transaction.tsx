@@ -14,7 +14,7 @@ function Transaction() {
     if (current != null) {
       fetchTransactions();
     }
-  }, [current]);
+  }, [amount]);
 
   useEffect(() => {
     const tokenString = localStorage.getItem("token");
@@ -42,7 +42,7 @@ function Transaction() {
   }
 
   async function fetchAccount(){
-    const result = await fetch("http://localhost:3000/api/v1/account/getBalance", {
+    const result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/account/getBalance`, {
       headers:{
         'Content-Type' : 'application/json',
         'token' : current
@@ -54,7 +54,7 @@ function Transaction() {
 
   async function fetchTransactions() {
     const data = await fetch(
-      "http://localhost:3000/api/v1/transaction/getTransactions",
+      `${import.meta.env.VITE_BACKEND_URL}/api/v1/transaction/getTransactions`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -67,10 +67,10 @@ function Transaction() {
   }
 
   return (
-    <div className="dark:bg-gray-900 flex flex-col min-h-screen pt-8">
+    <div className="bg-gray-900 flex flex-col min-h-screen pt-8">
       <Navbar />
       <div className="flex-1 flex mx-8 rounded-2xl mt-5 mb-2 gap-3">
-        <div className="w-2/3 min-h-full flex flex-col px-2 py-2 rounded-2xl">
+        <div className="w-2/3 min-h-full flex flex-col px-2 py-2 rounded-2xl overflow-auto">
           <TransactionList
             date="Date"
             from="Sender"
@@ -91,26 +91,26 @@ function Transaction() {
             <></>
           )}
         </div>
-        <div className="w-1/3 min-h-full flex flex-col rounded-2xl bg-gray-800 gap-6 px-6 py-4">
-          <div className="flex gap-6 justify-center">
-            <span className="text-white text-2xl bg-emerald-700 px-4 py-1 font-bold font-mono flex items-center rounded-xl justify-center  ">
+        <div className="w-1/3 h-fit pb-8 flex flex-col mt-2 rounded-2xl bg-gray-700 gap-4 px-4 py-4">
+          <div className="flex justify-center">
+            <span className="text-white text-2xl  px-4 py-1 font-bold font-mono flex items-center rounded-xl justify-center  ">
               User Details
             </span>
           </div>
-          <div className="flex flex-col gap-2 bg-gray-900 rounded-2xl px-4 py-4">
+          <div className="flex flex-col gap-2 bg-gray-800 rounded-2xl px-4 py-4">
             <div className="flex gap-4">
-              <span className="text-white text-lg flex items-center font-mono font-medium">e-mail : </span>
-              <div className="flex items-center text-white font-bold font-sans text-xl">{location.state.user.email}</div>
+              <span className="text-white text-lg flex items-center font-sans font-lg font-bold">Email : </span>
+              <div className="flex items-center text-white font-semibold font-sans text-lg">{location.state.user.email}</div>
             </div>
             <div className="flex gap-4">
-              <span className="text-white text-lg flex items-center font-mono font-medium">Username : </span>
-              <div className="flex items-center text-white font-bold font-sans text-xl">
+              <span className="text-white text-lg flex items-center font-sans font-lg font-bold">Username : </span>
+              <div className="flex items-center text-white font-semibold font-sans text-lg">
                 {location.state.user.username}
               </div>
             </div>
             <div className="flex gap-4">
-              <span className="text-white text-lg flex items-center font-mono font-medium">Acc. Balance : </span>
-              <div className="flex items-center text-white font-bold font-sans text-xl">{amount}</div>
+              <span className="text-white text-lg flex items-center font-sans font-lg font-bold">Acc. Balance : </span>
+              <div className="flex items-center text-white font-semibold font-sans text-lg">{amount}</div>
             </div>
           </div>
         </div>

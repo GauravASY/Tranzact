@@ -32,9 +32,12 @@ function DisplayList(props : propsType) {
   }
 
   return (
-    <List unstyled className=" divide-y dark:bg-gray-700 rounded-xl px-4 py-3 mb-2 w-2/3 divide-gray-200 dark:divide-gray-700">
-      <List.Item className="pb-3 sm:pb-4">
+    <List unstyled className=" divide-y bg-gray-700 rounded-xl px-4 py-3 mb-2 w-2/3 ">
+      <List.Item className="py-2 sm:pb-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
+          <div className="h-10 w-10 flex justify-center items-center text-white font-semibold text-lg bg-gray-900 rounded-full">
+            {props.username[0].toUpperCase()}
+          </div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-gray-50 dark:text-white">{props.username}</p>
             <p className="truncate text-sm text-gray-50 dark:text-white">{props.email}</p>

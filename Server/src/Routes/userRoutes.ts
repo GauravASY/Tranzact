@@ -2,7 +2,7 @@ import { Router, Request } from "express";
 import validation from "../Middlewares/validation";
 import authorization from "../Middlewares/authorization";
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 

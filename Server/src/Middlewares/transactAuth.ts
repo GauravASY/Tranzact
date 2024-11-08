@@ -22,10 +22,7 @@ function transactAuth(req :customRequest, res:Response, next:NextFunction){
     try {
         const token = jwt.verify(transactToken , process.env.JWT_TRANSACT_SECRET as string);
         if(token){
-            console.log(token);
-            // console.log(typeof(token)); outputs object.
             req.transactData = token as TransactType;
-            console.log(req.transactData);
             next();
         }
         else{

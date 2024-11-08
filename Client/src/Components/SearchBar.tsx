@@ -28,7 +28,7 @@ function SearchBar() {
         <input
           type="search"
           id="default-search"
-          className="block w-full p-4 ps-10 text-sm text-gray-50 border border-gray-300 rounded-full bg-gray-700 dark:border-gray-600 dark:placeholder-gray-300 dark:text-gray-50 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="block w-full p-4 ps-10 text-sm text-gray-50 focus:border-none rounded-full bg-gray-700"
           placeholder="Search and Filter list"
           required
         />

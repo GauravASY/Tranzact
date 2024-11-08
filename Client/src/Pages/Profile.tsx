@@ -38,7 +38,7 @@ async function fetchcCurrent(){
     const value = localStorage.getItem("token");
     if (value != null) {
       const token = JSON.parse(value);
-      const result = await fetch("http://localhost:3000/api/v1/user/getuser", {
+      const result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/getuser`, {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -53,7 +53,7 @@ async function fetchcCurrent(){
 }
 
 async function fetchList(){
-    const result = await fetch("http://localhost:3000/api/v1/user/list", {
+    const result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/list`, {
         headers : {
             'Content-Type' : 'application/json',
             'token' : log
@@ -72,20 +72,27 @@ interface userType{
 }
 
   return (
-    <div className="max-h-screen">
-    <div className={`dark:bg-gray-900 flex flex-col max-h-screen pt-8 relative ${visible ? "blur" : ""}`}>
+    <div className="h-screen bg-gray-900">
+    <div className={`flex flex-col h-full pt-8 relative ${visible ? "blur" : ""}`}>
         <Navbar/>
         <SearchBar/>
-        <div className="px-20 py-3 mx-8 flex-1 flex flex-col max-h-min items-center overflow-auto mb-4 h-full rounded-xl">
-            
-            {userList ? 
+       
+        <div className="px-20 py-3 bg-gray-900 flex-grow flex flex-col items-center overflow-auto mb-4">   
+        {
+            log ? (
+            userList ? 
             userList.filter((user : userType)=> user.id != currentUser?.id).map((user : userType)=>(
                 <DisplayList key= {user.id} username={user.username} email={user.email} password={user.password} id={user.id} setVisible={()=> setVisible(true)} setSendTo={setSendTo}/>
             ))
-            : <>Loading....</>}
-                
+            : <div className="bg-gray-900 h-full w-full flex justify-center items-center">
+                Loading...
+            </div>
+            ) : 
+            (
+                <div className="h-full w-full bg-gray-900 text-white flex items-center justify-center">Loading....</div>
+            )
+        }     
         </div>
-        
     </div>
         {
             visible ? <TransferBox setVisible={()=> setVisible(false)}  sendFrom={currentUser} Token={log} SendTo={sendTo} />  : <></>

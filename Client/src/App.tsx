@@ -6,7 +6,7 @@ function App() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-emerald-800 min-h-screen pt-8">
+    <div className="bg-gray-900 min-h-screen pt-8">
       <Navbar />
       <div className="flex flex-col items-center justify-center mt-20 ">
         <div className="w-2/3 items-center flex flex-col gap-8">

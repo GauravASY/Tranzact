@@ -14,7 +14,7 @@ function SignIn() {
   const path = window.location.pathname;
 
   async function handleSubmit(){
-      let result = await fetch(`http://localhost:3000/api/v1/user/signin`,{
+      let result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/signin`,{
         method: "POST",
         headers : {
           'Content-type' : 'application/json'

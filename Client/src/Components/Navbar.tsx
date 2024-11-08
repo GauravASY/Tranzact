@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SmallButton from "./SmallButton";
-import image from "../assets/transfer.png";
+import image from "../assets/currency.svg";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
@@ -15,7 +15,7 @@ function Navbar() {
     const value = localStorage.getItem("token");
     if (value != null) {
       const token = JSON.parse(value);
-      const result = await fetch("http://localhost:3000/api/v1/user/getuser", {
+      const result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/getuser`, {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -36,10 +36,10 @@ function Navbar() {
   }
 
   return (
-    <div className="flex justify-between px-20 py-3 mx-8 items-center bg-emerald-600 rounded-full">
+    <div className="flex justify-between px-20 py-3 mx-8 items-center bg-emerald-800 rounded-full">
       <div className="flex justify-between gap-14">
         <div className=" flex text-center items-center">
-          <img src={image} className="h-9 w-9 mr-3" alt="icon" />
+          <img src={image} className="h-9 w-9 mr-3 animate-spin" alt="icon" />
           <span className="font-mono text-white font-semibold text-xl ">Transzact</span>
         </div>
         <div className="flex gap-10">

@@ -13,4 +13,4 @@ app.use("/api/v1/transaction", transactRouter);
 app.use("/api/v1/account", accountRouter)
 
 
-app.listen(3000);
+app.listen(3000, ()=> console.log("Server listening on 3000"));
