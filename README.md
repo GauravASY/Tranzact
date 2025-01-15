@@ -7,13 +7,14 @@ This is a full-stack application that allows users to send and receive money. It
 - Transaction History : Users can view their transaction history (both sent and received money).
 - Error Handling : Comprehensive error handling for failed transactions, including rollback on errors.
 - Responsive UI : Built using React for a smooth, user-friendly experience across devices.
+  
 ## Presentation
 ![Screenshot (72)](https://github.com/user-attachments/assets/6e3fa266-09ef-4494-aee0-18c34d712c9f)
 ![Screenshot (67)](https://github.com/user-attachments/assets/85a0c539-916b-4655-8658-6f217984037f)
-![Screenshot (71)](https://github.com/user-attachments/assets/f631bbd7-ac4c-4eb3-bde3-09f1378ce1d2)
-![Screenshot (70)](https://github.com/user-attachments/assets/ae3adbd6-1afd-4e5f-8f07-ea0dfd5f7329)
-![Screenshot (69)](https://github.com/user-attachments/assets/bfeabc81-d458-4b30-ac54-fa89b15ffe52)
 ![Screenshot (68)](https://github.com/user-attachments/assets/9d24f6d7-64f7-40b4-9ef0-a93a4d24786a)
+![Screenshot (69)](https://github.com/user-attachments/assets/bfeabc81-d458-4b30-ac54-fa89b15ffe52)
+![Screenshot (70)](https://github.com/user-attachments/assets/ae3adbd6-1afd-4e5f-8f07-ea0dfd5f7329)
+![Screenshot (71)](https://github.com/user-attachments/assets/f631bbd7-ac4c-4eb3-bde3-09f1378ce1d2)
 
 ## Tech Stack
 ### Frontend:
